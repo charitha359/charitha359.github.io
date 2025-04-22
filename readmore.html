@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookNest - Read More Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .content {
+      max-height: 180px;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+      line-height: 1.6;
+    }
+
+    .content.expanded {
+      max-height: none;
+    }
+
+    .read-more-btn {
+      background-color: #6a0dad;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      text-align: center;
+      display: block;
+      margin: 20px auto 0;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .read-more-btn:hover {
+      background-color: #550088;
+    }
+
+    .extra-content {
+      margin-top: 20px;
+      color: #555;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .read-more-btn {
+        padding: 10px 20px;
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 10px;
+        border-radius: 6px;
+      }
+
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      .read-more-btn {
+        width: 100%;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>BookNest: Where Every Genre, Every Author, Every Book Finds a Home</h1>
+
+    <div class="content" id="myContent">
+      <p>Founded in 2020, BookNest has rapidly evolved from a humble online bookstore to a cornerstone of the literary community. Our unwavering mission is to bridge the gap between readers and the stories that resonate with their souls.</p>
+
+      <p>Our journey is deeply inspired by Liesel Meminger's transformative experience in Markus Zusak's "The Book Thief," underscoring the profound impact of stories. We are committed to delivering the magic of literature right to your doorstep, with a carefully curated selection that spans the vast spectrum of genres.</p>
+
+      <p>Whether you're in pursuit of the latest bestseller, a timeless classic that has stood the test of time, or a hidden gem waiting to be discovered, our passionate team is dedicated to guiding you towards your next literary adventure.</p>
+
+      <div class="extra-content">
+        <p><strong>Exclusive Offer:</strong> Sign up for our newsletter today and receive a 10% discount on your first order! Stay updated on new releases, author interviews, and special promotions.</p>
+
+        <p><strong>Our Community:</strong> Join our vibrant online community of book lovers. Share your thoughts, discuss your favorite books, and connect with fellow readers from around the world. We host regular virtual book clubs and author Q&A sessions.</p>
+
+        <p><strong>Sustainability Commitment:</strong> BookNest is committed to sustainable practices. We partner with eco-friendly publishers and use recycled packaging whenever possible.</p>
+      </div>
+    </div>
+
+    <button class="read-more-btn" id="readMoreBtn">Read More</button>
+  </div>
+
+  <script>
+    const content = document.getElementById('myContent');
+    const readMoreBtn = document.getElementById('readMoreBtn');
+
+    readMoreBtn.addEventListener('click', () => {
+      content.classList.toggle('expanded');
+      readMoreBtn.textContent = content.classList.contains('expanded') ? 'Read Less' : 'Read More';
+    });
+  </script>
+
+</body>
+</html>

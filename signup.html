@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - BookNest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f8f8f8 url('https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #002244;
+            color: white;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: #4B0082;
+        }
+
+        .signup-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .signup-box {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            margin: 20px 0;
+            transition: all 0.5s ease;
+        }
+
+        .signup-box h2 {
+            font-size: 24px;
+            color: #002244;
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .signup-box h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #4B0082;
+            margin: 8px auto;
+        }
+
+        .input-group {
+            margin-bottom: 14px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #002244;
+            font-size: 13px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #4B0082;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(75, 0, 130, 0.1);
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4B0082;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .signup-btn:hover {
+            background-color: #3a0069;
+        }
+
+        .login-link {
+            margin-top: 16px;
+            color: #002244;
+            font-size: 13px;
+        }
+
+        .login-link a {
+            color: #4B0082;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: #e63946;
+            font-size: 12px;
+            margin-top: 3px;
+            text-align: left;
+        }
+
+        .success-message {
+            color: #2a9d8f;
+            font-size: 16px;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 4px;
+            border-left: 4px solid #2a9d8f;
+            display: none;
+        }
+
+        .success-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .footer {
+            background-color: #002244;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 480px) {
+            .signup-box {
+                padding: 20px 15px;
+                max-width: 95%;
+                margin: 10px 0;
+            }
+
+            .navbar {
+                padding: 10px 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .signup-box h2 {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><a href="welcome.html">BookNest</a></div>
+        <div class="nav-links">
+            <a href="welcome.html">Home</a>
+            <a href="bestsellers.html">Bestsellers</a>
+        </div>
+    </nav>
+
+    <div class="signup-container">
+        <div class="signup-box" id="signupForm">
+            <h2>Create Your Account</h2>
+            <form onsubmit="return validateForm(event)">
+                <div class="input-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" placeholder="Enter your full name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Choose a username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a password (min 8 characters)" required minlength="8">
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Re-enter password" required>
+                    <p class="error" id="error-message"></p>
+                </div>
+                <button type="submit" class="signup-btn">Create Account</button>
+                <div class="success-message" id="success-message">
+                                        <span>Registration successful! Welcome to BookNest.</span>
+                </div>
+            </form>
+            <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+
+    
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+            const errorMessage = document.getElementById("error-message");
+            const successMessage = document.getElementById("success-message");
+
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "Passwords do not match!";
+                return false;
+            } else if (password.length < 8) {
+                errorMessage.textContent = "Password must be at least 8 characters long!";
+                return false;
+            } else {
+                errorMessage.textContent = "";
+                successMessage.style.display = "block";
+                
+               
+                document.getElementById("signupForm").reset();
+                
+                return false;
+            }
+        }
+    </script>
+
+</body>
+</html>
